@@ -33,3 +33,12 @@ public static class Todos
 //// Does not compile in .NET 7 !!
 //[JsonSerializable(typeof(IEnumerable<Todo>))]
 //public partial class TodosContext : JsonSerializerContext { }
+
+internal class AppSettings
+{
+    public required string ConnectionString { get; set; }
+
+    public string? JwtSigningKey { get; set; }
+
+    public bool SuppressDbInitialization { get; set; }
+}

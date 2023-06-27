@@ -5,7 +5,12 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
     options.SerializerOptions.WriteIndented = true;
+    //options.SerializerOptions.TypeInfoResolverChain.Add(TodosContext.Default);
 });
+
+builder.Services
+    .Configure<AppSettings>(builder.Configuration.GetSection(nameof(AppSettings)))
+    .AddOptions<AppSettings>();
 
 WebApplication app = builder.Build();
 
